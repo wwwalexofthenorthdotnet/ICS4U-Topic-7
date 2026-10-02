@@ -18,7 +18,42 @@ namespace ICS4U_Topic_7
 
         public static void Menu()
         {
+            bool finish = false;
+
+            int menuChoice = 0;
+
+            while (!finish)
+            {
+                Console.Clear();
+                Console.WriteLine("Topic 7 - Lists and Arrays : \n 0. Quit \n 1. Integer Lists \n 2. String Lists");
+
+                if (Int32.TryParse(Console.ReadLine(), out menuChoice))
+                {
+                    switch (menuChoice)
+                    {
+                        case 0:
+                            Console.Clear();
+                            Console.WriteLine("Thank you for using my program.");
+                            finish = true;
+                            break;
+                        case 1:
+                            Console.Clear();
+                            IntLists();
+                            break;
+                        case 2:
+                            Console.Clear();
+                            StringLists();
+                            break;
+                    }
+                }
+            }
+        }
+
+
+        public static void IntLists()
+        {
             List<int> randNum = new List<int>();
+            
 
             Random generator = new Random();
 
@@ -71,7 +106,7 @@ namespace ICS4U_Topic_7
                 {
                     case 0:
                         Console.Clear();
-                        Console.WriteLine("Thank you for using my program.");
+                        Console.WriteLine("Back to main menu.");
                         finish = true;
                         break;
                     case 1:
@@ -218,7 +253,20 @@ namespace ICS4U_Topic_7
 
                         break;
                     case 9:
-                        Console.WriteLine("Not working yet.");
+                        maxNum = randNum.Max();
+
+                        int[] count = new int[maxNum];
+
+                        for (int i = 0; randNum.Count > 0; i++)
+                        {
+                            count[0] = count[0] + 1;
+                        }
+
+                        //for (int i = 0; randNum.Count > 0; i++)
+                        //{
+                        //    Console.WriteLine(count[i] + ", ");
+                        //}
+
                         Next();
                         break;
                 }
@@ -229,11 +277,95 @@ namespace ICS4U_Topic_7
 
         }
 
+        public static void StringLists()
+        {
+            List<string> vegetables = new List<string>() { "carrots", "beet", "celery", "radish", "cabbage" };
+
+            int menuChoice = 0, removeIndex = 0;
+
+            string removeValue = "";
+
+            bool finish = false;
+
+            while (!finish)
+            {
+                Console.Clear();
+                Console.WriteLine("Vegetables : ");
+                for (int i = 0; i < vegetables.Count; i++)
+                {
+                    Console.WriteLine($"{i + 1} - {vegetables[i]}");
+                    Console.WriteLine();
+                }
+
+                Console.WriteLine();
+                Console.WriteLine("String Lists : \n 1. Remove Vegetable (by index) \n 2. Remove Vegetable (by name) \n 3. Search for Vegetable \n 4. Add a Vegetable \n 5. Sort List \n 6. Clear List \n 0. Quit \n");
+
+                if (Int32.TryParse(Console.ReadLine(), out menuChoice))
+                {
+                    
+                    switch (menuChoice)
+                    {
+                        case 0:
+                            Console.Clear();
+                            Console.WriteLine("Back to main menu.");
+                            Next();
+                            finish = true;
+                            break;
+                        case 1:
+                            Console.Clear();
+
+                            Console.WriteLine("Vegetables : ");
+                            for (int i = 0; i < vegetables.Count; i++)
+                            {
+                                Console.WriteLine($"{i + 1} - {vegetables[i]}");
+                                Console.WriteLine();
+                            }
+
+                            Console.Write("Input the index of the Vegetable you would like to remove : ");
+                            if (Int32.TryParse(Console.ReadLine(), out removeIndex))
+                            {
+                                if (removeIndex > 0 && removeIndex + 1 <= vegetables.Count + 1)
+                                Console.WriteLine($"{vegetables[removeIndex - 1]} removed.");
+
+                                vegetables.RemoveAt(removeIndex - 1);
+
+
+                            }
+                            else
+                            {
+                                Console.WriteLine("Must be smaller than the list size.");
+                            }
+
+                            Next();
+
+                            removeIndex = 0;
+
+                            break;
+                        case 2:
+                            Console.Clear();
+                            Console.Write("Input the name of the vegetable you would like to remove : ");
+
+                            removeValue = Console.ReadLine();
+
+                            
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                        case 5:
+                            break;
+                        case 6:
+                            break;
+                    }
+                }
+            }
+        }
+
 
 
         public static void Next()
         {
-            Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine("press ANY key to continue.");
             Console.ReadKey();
