@@ -60,7 +60,7 @@ namespace ICS4U_Topic_7
                 Console.WriteLine(" ]");
 
                 Console.WriteLine();
-                Console.WriteLine("Menu : \n 1. Sort List \n 2. New List \n 3. Remove Num \n 4. Add Value \n 5. Count Number of Occurances \n 6. Largest Value \n 7. Smallest Value \n 0. Quit");
+                Console.WriteLine("Integer Lists : \n 1. Sort List \n 2. New List \n 3. Remove Num \n 4. Add Value \n 5. Count Number of Occurances \n 6. Largest Value \n 7. Smallest Value \n 8. Sum & Average \n 9. Most Frequent Value \n 0. Quit");
 
                 Console.Write("Input Value : ");
                 Int32.TryParse(Console.ReadLine(), out menuChoice);
@@ -211,6 +211,15 @@ namespace ICS4U_Topic_7
 
                         Next();
 
+                        break;
+                    case 8:
+                        Console.WriteLine($"The average of the list is {Math.Round(randNum.Average(), 2)} and the sum is {randNum.Sum()}.");
+                        Next();
+
+                        break;
+                    case 9:
+                        Console.WriteLine("Not working yet.");
+                        Next();
                         break;
                 }
 
