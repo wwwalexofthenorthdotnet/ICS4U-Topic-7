@@ -255,12 +255,12 @@ namespace ICS4U_Topic_7
                     case 9:
                         maxNum = randNum.Max();
 
-                        int[] count = new int[maxNum];
+                        int[] count = new int[maxNum + 1];
 
-                        for (int i = 0; randNum.Count > 0; i++)
-                        {
-                            count[0] = count[0] + 1;
-                        }
+                        //for (int i = 0; count.Length > 0; i++)
+                        //{
+                        //    count[5] = count[5] + 1;
+                        //}
 
                         //for (int i = 0; randNum.Count > 0; i++)
                         //{
