@@ -383,10 +383,16 @@ namespace ICS4U_Topic_7
 
                             
                             removeValue = Console.ReadLine();
-                            
-                            vegetables.Remove(removeValue);
 
-                            Console.Write($"Removed {removeValue.Trim().ToLower()}.");
+                            if (addValue != "")
+                            {
+
+                                vegetables.Remove(removeValue);
+
+                                Console.Write($"Removed {removeValue.Trim().ToLower()}.");
+                            }
+
+                            Next();
                             
                             
                             break;
@@ -400,11 +406,34 @@ namespace ICS4U_Topic_7
 
                             addValue = Console.ReadLine();
 
+                            if (addValue != "")
+                            {
+
+                                vegetables.Add(addValue);
+
+                                Console.Write($"Added {addValue.Trim().ToLower()}.");
+                            }
+                            Next();
 
                             break;
                         case 5:
+                            Console.Clear();
+                            vegetables.Sort();
+
+                            Console.Write("List Sorted");
+
+
+                            Next();
                             break;
                         case 6:
+                            Console.Clear();
+                            vegetables.Clear();
+
+                            Console.Write("List cleared");
+
+                            Next();
+
+
                             break;
                     }
                 }
