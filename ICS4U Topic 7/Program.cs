@@ -1,10 +1,12 @@
 ﻿using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ICS4U_Topic_7
@@ -67,6 +69,7 @@ namespace ICS4U_Topic_7
             int countedNum = 0;
             int maxNum = 0;
             int minNum = 0;
+            int largestIndex = 0, largestPosition = 0;
 
 
 
@@ -253,19 +256,52 @@ namespace ICS4U_Topic_7
 
                         break;
                     case 9:
-                        maxNum = randNum.Max();
+                        
 
-                        int[] count = new int[maxNum + 1];
+                        int[] count = new int[randNum.Count()];
+                        List<int> list = new List<int>();
 
-                        //for (int i = 0; count.Length > 0; i++)
-                        //{
-                        //    count[5] = count[5] + 1;
-                        //}
+                        for (int i = 0; i < count.Length; i++)
+                        {
+                            for (int x = 0; x < randNum.Count; x++)
+                            {
+                                if (randNum[x] == i)
+                                    count[i]++;
+                            }
+                        }
 
-                        //for (int i = 0; randNum.Count > 0; i++)
-                        //{
-                        //    Console.WriteLine(count[i] + ", ");
-                        //}
+                        for (int i = 0; i < count.Length; i++)
+                        {
+                            if (largestIndex < count[i])
+                            {
+                                largestIndex = count[i];
+                            }
+                            if (count[i] >= largestIndex)
+                            {
+                                largestPosition = i;
+                            }
+
+
+
+                        }
+
+                        Console.WriteLine(largestIndex + ", " + largestPosition + 1);
+                        Console.WriteLine(count[largestPosition + 1]);
+
+                        Console.WriteLine(count.Max());
+
+                        Console.WriteLine();
+
+                        for (int i = 0; i < count.Length; i++)
+                        {
+                            Console.Write(count[i]);
+
+                            if (i != count.Length - 1)
+                            {
+                                Console.Write(", ");
+                            }
+                        }
+
 
                         Next();
                         break;
@@ -283,7 +319,7 @@ namespace ICS4U_Topic_7
 
             int menuChoice = 0, removeIndex = 0;
 
-            string removeValue = "";
+            string removeValue = "", addValue = "";
 
             bool finish = false;
 
@@ -345,13 +381,26 @@ namespace ICS4U_Topic_7
                             Console.Clear();
                             Console.Write("Input the name of the vegetable you would like to remove : ");
 
+                            
                             removeValue = Console.ReadLine();
+                            
+                            vegetables.Remove(removeValue);
 
+                            Console.Write($"Removed {removeValue.Trim().ToLower()}.");
+                            
                             
                             break;
                         case 3:
                             break;
                         case 4:
+                            Console.Clear();
+                            Console.Write("Input the name of the vegetable you would like to add : ");
+
+
+
+                            addValue = Console.ReadLine();
+
+
                             break;
                         case 5:
                             break;
