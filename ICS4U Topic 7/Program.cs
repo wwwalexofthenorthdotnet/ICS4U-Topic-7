@@ -98,7 +98,7 @@ namespace ICS4U_Topic_7
                 Console.WriteLine(" ]");
 
                 Console.WriteLine();
-                Console.WriteLine("Integer Lists : \n 1. Sort List \n 2. New List \n 3. Remove Num \n 4. Add Value \n 5. Count Number of Occurances \n 6. Largest Value \n 7. Smallest Value \n 8. Sum & Average \n 9. Most Frequent Value \n 0. Quit");
+                Console.WriteLine("Integer Lists : \n 1. Sort List \n 2. New List \n 3. Remove Num \n 4. Add Value \n 5. Count Number of Occurances \n 6. Largest Value \n 7. Smallest Value \n 8. Sum & Average \n 0. Quit");
 
                 Console.Write("Input Value : ");
                 Int32.TryParse(Console.ReadLine(), out menuChoice);
@@ -255,56 +255,7 @@ namespace ICS4U_Topic_7
                         Next();
 
                         break;
-                    case 9:
-                        
-
-                        int[] count = new int[randNum.Count()];
-                        List<int> list = new List<int>();
-
-                        for (int i = 0; i < count.Length; i++)
-                        {
-                            for (int x = 0; x < randNum.Count; x++)
-                            {
-                                if (randNum[x] == i)
-                                    count[i]++;
-                            }
-                        }
-
-                        for (int i = 0; i < count.Length; i++)
-                        {
-                            if (largestIndex < count[i])
-                            {
-                                largestIndex = count[i];
-                            }
-                            if (count[i] >= largestIndex)
-                            {
-                                largestPosition = i;
-                            }
-
-
-
-                        }
-
-                        Console.WriteLine(largestIndex + ", " + largestPosition + 1);
-                        Console.WriteLine(count[largestPosition + 1]);
-
-                        Console.WriteLine(count.Max());
-
-                        Console.WriteLine();
-
-                        for (int i = 0; i < count.Length; i++)
-                        {
-                            Console.Write(count[i]);
-
-                            if (i != count.Length - 1)
-                            {
-                                Console.Write(", ");
-                            }
-                        }
-
-
-                        Next();
-                        break;
+                    
                 }
 
             }
@@ -317,9 +268,9 @@ namespace ICS4U_Topic_7
         {
             List<string> vegetables = new List<string>() { "carrots", "beet", "celery", "radish", "cabbage" };
 
-            int menuChoice = 0, removeIndex = 0;
+            int menuChoice = 0, removeIndex = 0, searchIndex;
 
-            string removeValue = "", addValue = "";
+            string removeValue = "", addValue = "", searchValue = "";
 
             bool finish = false;
 
@@ -397,7 +348,25 @@ namespace ICS4U_Topic_7
                             
                             break;
                         case 3:
+                            Console.Write("Input what vegetable you would like to search for : ");
+                            searchValue = Console.ReadLine();
+
+                            if (searchValue == "")
+                            {
+                                Console.Clear();
+                                Console.WriteLine("Invalid Input");
+
+                            }
+                            else
+                            {
+
+                                searchIndex = vegetables.FindIndex(n => n.Equals(searchValue.ToLower().Trim()));
+                                Console.WriteLine($"Your vegetable was found at index {searchIndex + 1}.");
+
+                            }
+                            Next();
                             break;
+
                         case 4:
                             Console.Clear();
                             Console.Write("Input the name of the vegetable you would like to add : ");
